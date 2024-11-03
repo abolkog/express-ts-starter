@@ -16,7 +16,7 @@ const ignoredEndpoints = ['/health-check'];
  */
 export const apiKey = (req: Request, _res: Response, next: NextFunction) => {
   if (!AppConfig.useApiMiddleware) {
-    Logger.info(`API key middleware is disabled`);
+    Logger.debug(`API key middleware is disabled`);
     return next();
   }
 

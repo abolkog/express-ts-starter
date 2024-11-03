@@ -57,8 +57,8 @@ To create a new controller, you will need to extend the [base controller](./src/
 
    export class ExampleController extends Controller {
      constructor() {}
-     public static async getExample(req: Request, res: Response): Promise<void> {
-       res.status(200).json({ message: 'This is an example endpoint' });
+     public static async getExample(req: Request, res: Response) {
+       return this.sendSuccess(res, { message: 'This is an example endpoint' });
      }
    }
    ```
@@ -71,10 +71,10 @@ To create a new controller, you will need to extend the [base controller](./src/
 
    export class ExampleController extends Controller {
      constructor() {
-       super('/todo', 'post');
+       super('/todo', 'post'); // <-- Endpoint url and HTTP method registration
      }
-     public static async getExample(req: Request, res: Response): Promise<void> {
-       res.status(200).json({ message: 'This is an example endpoint' });
+     public static async getExample(req: Request, res: Response) {
+       return this.sendSuccess(res, { message: 'This is an example endpoint' });
      }
    }
    ```
