@@ -4,6 +4,8 @@ import Logger from './util/logger';
 import { errorHandler } from './middlewares/errors';
 import NotFoundError from './errors/notFoundError';
 import Controller from './controllers/controller';
+import { apiKey } from './middlewares/apiKey';
+import { ignoreFavicon } from './middlewares/ignoreFavicon';
 
 export class App {
   public app: Application;
@@ -27,6 +29,8 @@ export class App {
   private initMiddlewares() {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(apiKey);
+    this.app.use(ignoreFavicon);
   }
 
   /**
