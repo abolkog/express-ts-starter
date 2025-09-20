@@ -26,7 +26,7 @@ describe('app test', () => {
       const res = await request(app).get('/health-check');
       const { body, statusCode } = res;
       expect(statusCode).toBe(200);
-      expect(body).toHaveProperty('data', { message: 'Express app is up and runnning' });
+      expect(body).toHaveProperty('data', { message: 'Express app is up and running' });
     });
   });
 
@@ -79,7 +79,7 @@ describe('app test', () => {
         const res = await request(app).get('/health-check');
         const { body, statusCode } = res;
         expect(statusCode).toBe(200);
-        expect(body).toHaveProperty('data', { message: 'Express app is up and runnning' });
+        expect(body).toHaveProperty('data', { message: 'Express app is up and running' });
       });
     });
   });

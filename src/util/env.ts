@@ -24,3 +24,17 @@ export function getEnvWithDefaultValue(name: string, defaultValue?: string) {
     return defaultValue;
   }
 }
+
+/**
+ * get env variable as Int
+ * @param name
+ * @param defaultValue
+ * @returns
+ */
+export function getEnvAsInt(name: string, defaultValue?: number) {
+  try {
+    return parseInt(getEnv(name));
+  } catch (_e) {
+    return defaultValue || 0;
+  }
+}

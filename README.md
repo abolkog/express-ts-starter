@@ -25,9 +25,20 @@ This is a starter template for building RESTful APIs using Express and TypeScrip
    ```
 
 3. Create a `.env` file in the root directory and add your environment variables:
+
    ```sh
    cp .env.example .env
    ```
+
+   ### Environment Variables
+
+   | Variable                 | Description                                                           | Example Value | Default value |
+   | ------------------------ | --------------------------------------------------------------------- | ------------- | ------------- |
+   | `APP_PORT`               | Port number for the server (Optional)                                 | `5000`        | 5000          |
+   | `USE_API_KEY_MIDDLEWARE` | Flag to determine if we should use apiKey middleware or no (Optional) | `true`        | false         |
+   | `APP_API_KEY`            | Api key used by apiKey middleware (Optional)                          | `localhost`   |               |
+
+   > Update the `.env` file with your actual values as needed.
 
 ## Setup
 

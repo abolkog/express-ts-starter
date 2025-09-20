@@ -11,7 +11,7 @@ const ignoredEndpoints = ['/health-check'];
 /**
  * Middleware to check for API key in the request header
  * @param req Http request instance
- * @param _res Http reesponse instance
+ * @param _res Http response instance
  * @param next Next function
  */
 export const apiKey = (req: Request, _res: Response, next: NextFunction) => {

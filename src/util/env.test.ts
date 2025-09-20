@@ -1,4 +1,4 @@
-import { getEnv, getEnvWithDefaultValue } from './env';
+import { getEnv, getEnvAsInt, getEnvWithDefaultValue } from './env';
 
 describe('env util tests', () => {
   describe('getEnv', () => {
@@ -27,6 +27,21 @@ describe('env util tests', () => {
     describe('given a missing env variable', () => {
       it('return the default value provided', () => {
         expect(getEnvWithDefaultValue('some_value', 'i am default')).toEqual('i am default');
+      });
+    });
+  });
+
+  describe('getEnvAsInt', () => {
+    describe('given an existing env variable', () => {
+      beforeAll(() => (process.env['dummy'] = '10'));
+      it('return the env variable value as number', () => {
+        expect(getEnvAsInt('dummy')).toEqual(10);
+      });
+    });
+
+    describe('given a missing env variable', () => {
+      it('return the default value provided', () => {
+        expect(getEnvAsInt('some_value', 20)).toEqual(20);
       });
     });
   });

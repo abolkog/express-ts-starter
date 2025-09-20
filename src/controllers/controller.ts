@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction, Router } from 'express';
+import { Response, NextFunction, Router } from 'express';
 import { errorResponse, ResponseMeta, successResponse } from '../util/response';
 
 type HttpMethod = 'get' | 'post' | 'put' | 'delete' | 'patch';
@@ -32,7 +32,7 @@ abstract class Controller {
    * @param res - The Express response object.
    * @param _next - The Express next middleware function.
    */
-  protected abstract handler(req: Request, res: Response, _next: NextFunction): unknown;
+  protected abstract handler(req: TypedRequest<unknown, unknown>, res: Response, _next: NextFunction): unknown;
 
   /**
    * Sends a success response with the provided data and optional metadata.

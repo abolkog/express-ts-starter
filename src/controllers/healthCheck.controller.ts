@@ -7,6 +7,6 @@ export default class HealthCheckController extends Controller {
   }
 
   protected handler(req: Request, res: Response) {
-    return this.sendSuccess(res, { message: 'Express app is up and runnning' });
+    return this.sendSuccess(res, { message: 'Express app is up and running' });
   }
 }
