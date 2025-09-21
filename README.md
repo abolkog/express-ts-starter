@@ -109,6 +109,33 @@ To create a new controller, you will need to extend the [base controller](./src/
    ]);
    ```
 
+### Adding Middleware to a Specific Controller
+
+You can add middleware directly to a specific controller by passing an array of middleware functions to the controller's constructor. The base `Controller` class supports this pattern:
+
+```typescript
+import { Request, Response, NextFunction } from 'express';
+import Controller from './controller';
+
+// Example middleware
+const exampleMiddleware = (req: Request, res: Response, next: NextFunction) => {
+  // Do something
+  next();
+};
+
+export default class HealthCheckController extends Controller {
+  constructor() {
+    super('/health-check', 'get', [exampleMiddleware]);
+  }
+
+  protected handler(req: Request, res: Response) {
+    return this.sendSuccess(res, { message: 'Express app is up and running' });
+  }
+}
+```
+
+This allows you to attach any middleware directly to a controller’s route, keeping your middleware logic modular and organized.
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

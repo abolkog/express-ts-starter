@@ -3,7 +3,6 @@ import { NextFunction, Request, Response } from 'express';
 import UnauthorisedError from '../errors/unauthorisedError';
 import { getEnvWithDefaultValue } from '../util/env';
 import { AppConfig } from '../util/appConfig';
-import Logger from '../util/logger';
 
 // List of endpoints that we do not want to run the api key middleware against.
 const ignoredEndpoints = ['/health-check'];
@@ -16,7 +15,6 @@ const ignoredEndpoints = ['/health-check'];
  */
 export const apiKey = (req: Request, _res: Response, next: NextFunction) => {
   if (!AppConfig.useApiMiddleware) {
-    Logger.debug(`API key middleware is disabled`);
     return next();
   }
 

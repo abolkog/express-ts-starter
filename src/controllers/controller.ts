@@ -1,7 +1,8 @@
-import { Response, NextFunction, Router } from 'express';
+import { Response, NextFunction, Router, Request } from 'express';
 import { errorResponse, ResponseMeta, successResponse } from '../util/response';
 
 type HttpMethod = 'get' | 'post' | 'put' | 'delete' | 'patch';
+type Middleware = (req: Request, res: Response, next: NextFunction) => void;
 
 /**
  * Abstract base class for creating controllers in an Express application.
@@ -19,9 +20,10 @@ abstract class Controller {
    *
    * @param path - The path for the route.
    * @param method - The HTTP method for the route. Defaults to 'get'.
+   * @param middlewares - Optional middleware to apply to the controller
    */
-  constructor(path: string, method: HttpMethod = 'get') {
-    this.router[method](path, this.handler.bind(this));
+  constructor(path: string, method: HttpMethod = 'get', middlewares: Middleware[] = []) {
+    this.router[method](path, ...middlewares, this.handler.bind(this));
   }
 
   /**
